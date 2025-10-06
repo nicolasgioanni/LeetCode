@@ -1,7 +1,7 @@
 # Blind 75 Notes
 
 <!-- AUTO-GENERATED FILE. DO NOT EDIT MANUALLY. -->
-*Last updated: 2025-10-05 13:20 UTC*
+*Last updated: 2025-10-06 13:29 UTC*
 
 [Source spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vRw_Ro70SyoCP4FIHwwfkDdwVhXWU_lKwfl6Rw3tXlD1nFD5gfPVk1B0SufuQATexITGzPiwNmeUav0/pub?output=csv
 )
@@ -393,7 +393,17 @@
 ## Graphs
 
 **Number of Islands** *([Problem](https://leetcode.com/problems/number-of-islands/) | [Solution](../Problems/0200.%20Number%20of%20Islands/solution.py))*
-- _No details provided._
+- **Notes:**
+  - Idea: Iterate through each coordinate (row and col) in grid/matrix and run bfs or dfs every time we see a unvisited island coordinate (not in set)
+  - BFS or DFS: Logic works for both below but bfs pops left vs. dfs pops right
+  - Add the first coordinate to our visited set and to our queue (collections.deque)
+  - While loop as long as we have valid coordinates in our queue
+  - For loop to check all directions (left/right/up/down) of our current coordinates, if any of those coordinates:
+  - Are within our row and col bounds (0 to the length of 0-indexed range)
+  - Is an island in our grid (grid[row][col] == "x")
+  - And is not in our visited set
+  - Means: we found another valid coordinate a part of this island, and we update our visited set and queue with those coordinates to reiterate
+  - Otherwise: we do nothing until the queue is empty
 
 **Clone Graph** *([Problem](https://leetcode.com/problems/clone-graph/) | [Solution](../Problems/0133.%20Clone%20Graph/solution.py))*
 - _No details provided._
