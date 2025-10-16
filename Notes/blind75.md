@@ -1,7 +1,7 @@
 # Blind 75 Notes
 
 <!-- AUTO-GENERATED FILE. DO NOT EDIT MANUALLY. -->
-*Last updated: 2025-10-15 13:31 UTC*
+*Last updated: 2025-10-16 13:31 UTC*
 
 [Source spreadsheet](https://docs.google.com/spreadsheets/d/e/2PACX-1vRw_Ro70SyoCP4FIHwwfkDdwVhXWU_lKwfl6Rw3tXlD1nFD5gfPVk1B0SufuQATexITGzPiwNmeUav0/pub?output=csv
 )
@@ -634,7 +634,7 @@
 - **Space Complexity:** O(n): O(row * col)
 - **Notes:**
   <ul>
-    <li>Idea: Iterate through top/bottom, left/right sides and recursivly dfs go inward storing valid coordinates in sets (coordinates that are in a path to ocean)
+    <li>Idea: Iterate through top/bottom, left/right sides and recursively dfs go inward storing valid coordinates in sets (coordinates that are in a path to ocean)
       <ol type="1">
         <li>Top/Bottom: Iterate through cols and recursive dfs on every coordinate on the top and bottom row (0, rows -1)</li>
         <li>Left/Right: Iterate through rows and recursive dfs on every coordinate on the left and right cols (0, cols - 1)</li>
@@ -650,7 +650,28 @@
   </ul>
 
 **Course Schedule** *([Problem](https://leetcode.com/problems/course-schedule/) | [Solution](../Problems/0207.%20Course%20Schedule/solution.py))*
-- _No details provided._
+- **Time Complexity:** O(V * E)
+- **Space Complexity:** O(V * E)
+- **Notes:**
+  <ul>
+    <li>Idea: Map course to its prerequisites, and run dfs on each prerequiste keeping track of the path
+      <ol type="1">
+        <li>Data structures: adjacency map (course to prerequisites); path set (path in our DFS process)</li>
+        <li>Iteration: Run DFS on every course; If any returns false, return false.</li>
+        <li>DFS:</li>
+      </ol>
+      <ul>
+        <li>Base case 1) If a course is already on our path (cycle), return false</li>
+        <li>Base case 2) If a course has no prerequsites (completed), return true</li>
+        <li>Otherwise: Add the course to our path and DFS on all prerequisites and:
+          <ul>
+            <li>If any of the DFS on prerequistes return false, return false</li>
+            <li>Else memoize and remove all the prerequisites for that course</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 
 **Graph Valid Tree** *([Problem](https://leetcode.com/problems/graph-valid-tree/) | [Solution](../Problems/0261.%20Graph%20Valid%20Tree/solution.py))*
 - _No details provided._
